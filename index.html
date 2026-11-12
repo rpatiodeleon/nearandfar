@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Good Food, Near and Far</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700;9..144,800&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="topbar">
+      <div class="brand">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 3v9a3 3 0 0 0 3 3v6M4 3v6M7 3v6M10 3v9M17 21V9c0-3.3 1.5-6 3-6v18"/></svg>
+        Near &amp; Far
+      </div>
+      <div class="locpill">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s7-7.2 7-12a7 7 0 1 0-14 0c0 4.8 7 12 7 12z"/><circle cx="12" cy="9" r="2.4"/></svg>
+        <span><b>Tarlac City</b>, Central Luzon</span>
+      </div>
+    </div>
+
+    <div class="hero-grid">
+      <div>
+        <h1>Good food starts close to home.</h1>
+        <p class="lede">Find great food nearby, from local favorites to dishes around the Philippines.</p>
+        <a class="cta" href="#dishes">See what’s near Tarlac City</a>
+      </div>
+
+      <div class="board" aria-label="Today’s picks near Tarlac City">
+        <div class="board-title">Today’s picks near you</div>
+        <div class="row"><div><div class="dish">Tupig</div><div class="place">Grilled rice and coconut</div></div><div class="away">In Tarlac</div></div>
+        <div class="row"><div><div class="dish">Chicharon Camiling</div><div class="place">Twice-cooked pork rind</div></div><div class="away">Same province</div></div>
+        <div class="row"><div><div class="dish">Sisig</div><div class="place">Sizzling, from Pampanga</div></div><div class="away">Next door</div></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="section" id="dishes">
+  <div class="wrap">
+    <div class="head">
+      <h2>Close to Tarlac City</h2>
+      <p>Kapampangan, Ilocano and Pangasinense flavors meet here. Tarlac is Central Luzon’s melting pot, and the food shows it.</p>
+    </div>
+
+    <div class="chips" role="group" aria-label="Filter dishes">
+      <button class="chip" data-filter="all" aria-pressed="true">All dishes</button>
+      <button class="chip" data-filter="home" aria-pressed="false">In Tarlac</button>
+      <button class="chip" data-filter="next" aria-pressed="false">Next door</button>
+    </div>
+
+    <div class="bento" id="bento"></div>
+  </div>
+</main>
+
+
+<section class="mapsec" id="map">
+  <div class="wrap">
+    <div class="head">
+      <h2>Find restaurants on the map</h2>
+      <p>Search for a dish, a restaurant, or a town, or tap a quick pick to see where to eat.</p>
+    </div>
+
+    <form class="mapform" id="map-form" role="search">
+      <input id="map-q" type="search" placeholder="Try &ldquo;sisig in Angeles&rdquo; or &ldquo;restaurants in Baguio&rdquo;" aria-label="Search for restaurants on the map">
+      <button class="btn" type="submit">Search map</button>
+      <button class="btn alt" type="button" id="map-near">Use my location</button>
+    </form>
+
+    <div class="chips mapchips" role="group" aria-label="Quick map searches">
+      <button class="chip" type="button" data-q="restaurants near Tarlac City">All restaurants</button>
+      <button class="chip" type="button" data-q="tupig near Tarlac City">Tupig</button>
+      <button class="chip" type="button" data-q="sisig near Tarlac City">Sisig</button>
+      <button class="chip" type="button" data-q="chicharon near Camiling Tarlac">Chicharon</button>
+      <button class="chip" type="button" data-q="longganisa near Tarlac City">Longganisa</button>
+      <button class="chip" type="button" data-q="Kapampangan restaurants near Tarlac City">Kapampangan</button>
+    </div>
+
+    <div class="mapbox">
+      <iframe id="map-frame" title="Map of restaurants" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen
+        src="https://www.google.com/maps?q=restaurants%20near%20Tarlac%20City&amp;output=embed"></iframe>
+    </div>
+    <div class="mapnote">
+      <span id="map-status">Showing: restaurants near Tarlac City</span>
+      <a id="map-open" href="https://www.google.com/maps/search/?api=1&amp;query=restaurants%20near%20Tarlac%20City" target="_blank" rel="noopener">Open in Google Maps</a>
+    </div>
+  </div>
+</section>
+
+<dialog class="detail" id="dish-dialog" aria-labelledby="dish-title">
+  <img id="dish-dialog-img" alt="" hidden>
+  <button class="close" id="dish-close" aria-label="Close">&times;</button>
+  <div class="body">
+    <h3 id="dish-title"></h3>
+    <div class="origin" id="dish-origin"></div>
+    <p id="dish-desc"></p>
+    <p id="dish-more"></p>
+    <h4>Where to find it</h4>
+    <div class="soon">Restaurants and stalls serving this dish near Tarlac City will appear here, with their location and menu.</div>
+    <button class="btn mapbtn" type="button" id="dish-map">Find it on the map</button>
+  </div>
+</dialog>
+
+<footer>
+  <b>Near &amp; Far</b>
+  Good food, wherever you are in the Philippines.
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
